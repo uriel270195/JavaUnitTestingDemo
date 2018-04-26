@@ -1,0 +1,20 @@
+package com.howtoprogram.junit5;
+
+public class Calculator {
+	public int suma(int a, int b) {
+		return a+b;
+	}
+	public int resta(int a, int b) {
+		return a-b;
+	}
+	public int multiplicacion(int a, int b) {
+		return a*b;
+	}
+	public int division(int a, int b) {
+		try {
+			return a/b;
+		}catch(ArithmeticException E) {
+			return 0;
+		}
+	}
+}
