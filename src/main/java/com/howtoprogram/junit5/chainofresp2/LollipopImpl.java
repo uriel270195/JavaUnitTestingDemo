@@ -1,6 +1,6 @@
 package com.howtoprogram.junit5.chainofresp2;
 
-public class LollipopImpl implements ICandyMachine{
+public class LollipopImpl extends ICandyMachine{
 	
 	private  ICandyMachine chain;
 	private double price=5;
@@ -15,14 +15,8 @@ public class LollipopImpl implements ICandyMachine{
 	@Override
 	public void dispense(ProductosMachine productsMachine) {
 		// TODO Auto-generated method stub
-		int lillipop=0;
 		double money=productsMachine.getMoney();
-		while(money >= this.price) {
-			money-=this.price;
-			lillipop++;
-		}
-		productsMachine.setPaletas(lillipop);
-		productsMachine.setMoney(money);
+		productsMachine.setPaletas(ICandyMachine.addProducts(productsMachine, money, this.price));
 		if(this.chain != null) {
 			this.chain.dispense(productsMachine);
 		}

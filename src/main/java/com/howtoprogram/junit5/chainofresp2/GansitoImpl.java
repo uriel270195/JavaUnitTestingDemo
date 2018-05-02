@@ -1,6 +1,6 @@
 package com.howtoprogram.junit5.chainofresp2;
 
-public class GansitoImpl implements ICandyMachine{
+public class GansitoImpl extends ICandyMachine{
 
 	private  ICandyMachine chain;
 	private double price=12;
@@ -11,16 +11,8 @@ public class GansitoImpl implements ICandyMachine{
 
 	public void dispense(ProductosMachine productsMachine) {
 		// TODO Auto-generated method stub
-		ICandyMachine icm;
 		double money=productsMachine.getMoney();
-		icm.addProducts(productsMachine, money);
-		int gansitos=0;
-		while(money >= this.price) {
-			money-=this.price;
-			gansitos++;
-		}
-		productsMachine.setGansitos(gansitos);
-		productsMachine.setMoney(money);
+		productsMachine.setGansitos(ICandyMachine.addProducts(productsMachine, money, this.price));
 		if(this.chain != null) {
 			this.chain.dispense(productsMachine);
 		}

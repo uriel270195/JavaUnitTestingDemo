@@ -1,6 +1,6 @@
 package com.howtoprogram.junit5.chainofresp2;
 
-public class NitoImpl implements ICandyMachine{
+public class NitoImpl extends ICandyMachine{
 
 	private  ICandyMachine chain;
 	private double price=8;
@@ -13,14 +13,8 @@ public class NitoImpl implements ICandyMachine{
 	@Override
 	public void dispense(ProductosMachine productsMachine) {
 		// TODO Auto-generated method stub
-		int nitos=0;
 		double money=productsMachine.getMoney();
-		while(money >= this.price) {
-			money-=this.price;
-			nitos++;
-		}
-		productsMachine.setNitos(nitos);
-		productsMachine.setMoney(money);
+		productsMachine.setNitos(ICandyMachine.addProducts(productsMachine, money, this.price));
 		if(this.chain != null) {
 			this.chain.dispense(productsMachine);
 		}

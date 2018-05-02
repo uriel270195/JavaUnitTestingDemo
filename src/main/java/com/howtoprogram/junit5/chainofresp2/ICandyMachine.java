@@ -3,12 +3,14 @@ package com.howtoprogram.junit5.chainofresp2;
 public abstract class ICandyMachine {
 	abstract void setNextChain(ICandyMachine nextChain);
 	abstract void dispense(ProductosMachine productsMachine);
-	int addProducts(ProductosMachine productsMachine, double money) {
-		int gansitos=0;
-		while(money >= this.price) {
-			money-=this.price;
-			gansitos++;
+	static int addProducts(ProductosMachine productsMachine, double money, double price) {
+		int producto=0;
+		while(money >= price) {
+			money-=price;
+			
+			producto++;
 		}
-		return 0;
+		productsMachine.setMoney(money);
+		return producto;
 	};
 }
